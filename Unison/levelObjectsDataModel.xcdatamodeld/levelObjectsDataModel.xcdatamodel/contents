@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+    <entity name="HorizontalWall" representedClassName=".HorizontalWall" syncable="YES">
+        <attribute name="countOnLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="xPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="yPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="theHorizWallLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Level" inverseName="aHorizontalWall" inverseEntity="Level" syncable="YES"/>
+    </entity>
+    <entity name="HorizontalWallDeivation" representedClassName=".HorizontalWallDeivation" syncable="YES">
+        <attribute name="countOnLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="xPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="yPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="theHorizWallDLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Level" inverseName="aHorizontalWallDeivation" inverseEntity="Level" syncable="YES"/>
+    </entity>
+    <entity name="Level" representedClassName=".Level" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="number" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <relationship name="aHorizontalWall" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HorizontalWall" inverseName="theHorizWallLevel" inverseEntity="HorizontalWall" syncable="YES"/>
+        <relationship name="aHorizontalWallDeivation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HorizontalWallDeivation" inverseName="theHorizWallDLevel" inverseEntity="HorizontalWallDeivation" syncable="YES"/>
+        <relationship name="aModDoubler" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ModifierDoubleMover" inverseName="theDoublersLevel" inverseEntity="ModifierDoubleMover" syncable="YES"/>
+        <relationship name="aModHolder" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ModifierHolder" inverseName="theHoldersLevel" inverseEntity="ModifierHolder" syncable="YES"/>
+        <relationship name="aModOppositer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ModifierOppositer" inverseName="theOppositersLevel" inverseEntity="ModifierOppositer" syncable="YES"/>
+        <relationship name="aVerticalWall" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VerticalWall" inverseName="theVerticalWallsLevel" inverseEntity="VerticalWall" syncable="YES"/>
+        <relationship name="aVerticalWallDeivation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VerticalWallDeivation" inverseName="theVertWallDeivLevel" inverseEntity="VerticalWallDeivation" syncable="YES"/>
+        <relationship name="theGoal" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LevelGoal" inverseName="theGoalsLevel" inverseEntity="LevelGoal" syncable="YES"/>
+        <relationship name="theMirrorGoal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MirrorGoal" inverseName="theMirrorsLevel" inverseEntity="MirrorGoal" syncable="YES"/>
+    </entity>
+    <entity name="LevelGoal" representedClassName=".LevelGoal" syncable="YES">
+        <attribute name="countOnLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="xPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="yPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="theGoalsLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Level" inverseName="theGoal" inverseEntity="Level" syncable="YES"/>
+    </entity>
+    <entity name="MirrorGoal" representedClassName=".MirrorGoal" syncable="YES">
+        <attribute name="countOnLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="xPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="yPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="theMirrorsLevel" maxCount="1" deletionRule="Nullify" destinationEntity="Level" inverseName="theMirrorGoal" inverseEntity="Level" syncable="YES"/>
+    </entity>
+    <entity name="ModifierDoubleMover" representedClassName=".ModifierDoubleMover" syncable="YES">
+        <attribute name="countOnLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="xPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="yPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="theDoublersLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Level" inverseName="aModDoubler" inverseEntity="Level" syncable="YES"/>
+    </entity>
+    <entity name="ModifierHolder" representedClassName=".ModifierHolder" syncable="YES">
+        <attribute name="countOnLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="xPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="yPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="theHoldersLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Level" inverseName="aModHolder" inverseEntity="Level" syncable="YES"/>
+    </entity>
+    <entity name="ModifierOppositer" representedClassName=".ModifierOppositer" syncable="YES">
+        <attribute name="countOnLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="xPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="yPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="theOppositersLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Level" inverseName="aModOppositer" inverseEntity="Level" syncable="YES"/>
+    </entity>
+    <entity name="VerticalWall" representedClassName=".VerticalWall" syncable="YES">
+        <attribute name="countOnLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="xPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="yPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="theVerticalWallsLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Level" inverseName="aVerticalWall" inverseEntity="Level" syncable="YES"/>
+    </entity>
+    <entity name="VerticalWallDeivation" representedClassName=".VerticalWallDeivation" syncable="YES">
+        <attribute name="countOnLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="xPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="yPosition" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="theVertWallDeivLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Level" inverseName="aVerticalWallDeivation" inverseEntity="Level" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="HorizontalWall" positionX="18" positionY="108" width="128" height="105"/>
+        <element name="HorizontalWallDeivation" positionX="27" positionY="117" width="128" height="105"/>
+        <element name="Level" positionX="9" positionY="72" width="128" height="210"/>
+        <element name="LevelGoal" positionX="-9" positionY="45" width="128" height="105"/>
+        <element name="MirrorGoal" positionX="0" positionY="90" width="128" height="105"/>
+        <element name="ModifierDoubleMover" positionX="81" positionY="162" width="128" height="105"/>
+        <element name="ModifierHolder" positionX="63" positionY="153" width="128" height="105"/>
+        <element name="ModifierOppositer" positionX="36" positionY="108" width="128" height="105"/>
+        <element name="VerticalWall" positionX="9" positionY="99" width="128" height="105"/>
+        <element name="VerticalWallDeivation" positionX="45" positionY="135" width="128" height="105"/>
+    </elements>
+</model>
